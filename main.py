@@ -10,7 +10,7 @@ bot = telebot.TeleBot(config.TOKEN)
 @bot.message_handler(commands=['start'])
 def speeking_text(message):
     mytext = message.text
-    language = 'en'
+    language = 'en'  #You can change the language
     myobj = gTTS(text=mytext, lang=language, slow=False)
     myobj.save("message.mp3")
     audio = open('message.mp3', 'rb')
