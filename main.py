@@ -7,7 +7,6 @@ import os
 
 bot = telebot.TeleBot(config.TOKEN)
 
-@bot.message_handler(commands=['start'])
 def speeking_text(message):
     mytext = message.text
     language = 'en'  #You can change the language
@@ -15,7 +14,8 @@ def speeking_text(message):
     myobj.save("message.mp3")
     audio = open('message.mp3', 'rb')
     bot.send_audio(message.chat.id, audio)
-
+    
+@bot.message_handler(commands=['start'])
 def start(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     item1 = types.KeyboardButton("🎤 Translate text to audio")
